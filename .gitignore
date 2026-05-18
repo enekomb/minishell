@@ -1,0 +1,12 @@
+.DS_Store
+main/*.o
+parsing/*.o
+token/*.o
+libft/*.o
+exec/*.o
+builtins/*.o
+minishell
+.vscode
+.out
+*.o
+*.a
