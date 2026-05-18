@@ -29,10 +29,12 @@ static void	remove_from(char *str, char **matrix)
 			while (matrix[i] != NULL)
 			{
 				free(matrix[i]);
-				matrix[i] = ft_strdup(matrix[i +1]);
+				if (matrix[i + 1] != NULL)
+					matrix[i] = ft_strdup(matrix[i + 1]);
+				else
+					matrix[i] = NULL;
 				i++;
 			}
-			free(matrix[i]);
 			return ;
 		}
 		i++;

@@ -55,8 +55,11 @@ int	has_redirection(t_mini *mini)
 
 int do_redirection(t_mini *mini, int count_pipex)
 {
+	int	prev_read;
+
 	if (!has_redirection(mini))
 		return (0);
+	prev_read = mini->fd[0];
 	if (count_pipex < mini->nbr_pipex)
 		if (pipe(mini->fd) < 0)
 			return(printf("Error doing pipe\n"), 0);
@@ -77,8 +80,8 @@ int do_redirection(t_mini *mini, int count_pipex)
 	}
 	else if (count_pipex != 0)
 	{
-		dup2(mini->fd[0], STDIN_FILENO);
-		close(mini->fd[0]);
+		dup2(prev_read, STDIN_FILENO);
+		close(prev_read);
 	}
 	return (1);
 }

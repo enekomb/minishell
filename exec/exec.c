@@ -108,6 +108,7 @@ void	create_child(t_mini *cur_mini)
 		if (cur_mini->token && cur_mini->token->type == T_PIPE)
 			cur_mini->token = cur_mini->token->next;
 		count_pipex++;
+		fflush(stdout);
 		dup2(original_stdout, STDOUT_FILENO);
 		dup2(original_stdin, STDIN_FILENO);
 	}

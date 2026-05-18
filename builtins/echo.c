@@ -32,7 +32,7 @@ static void	ft_echo_utils(t_token *cur_token)
 		else if (cur_token && !ft_compare(cur_token->value, "$?"))
 			printf("%d", g_status);
 		else if (cur_token != NULL && cur_token->type == T_IDENTIFIER
-			&& cur_token->next)
+			&& cur_token->next && cur_token->next->type == T_IDENTIFIER)
 			printf("%s ", cur_token->value);
 		else if (cur_token != NULL && cur_token->type == T_IDENTIFIER)
 			printf("%s", cur_token->value);
